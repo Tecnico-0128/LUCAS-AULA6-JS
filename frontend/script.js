@@ -7,7 +7,7 @@ const nome3 = document.getElementById('nome3')
 
 const produtoa = document.getElementById('produtoa')
 const quantidadea = document.getElementById('quantidadea')
- const compras =  []
+const compras =  []
 const dadosa = document.getElementById('lista-compra')
 
 const nomep = document.getElementById('nomep');
@@ -57,8 +57,8 @@ async function buscar_venda() {
     const dados = await busca.json()
     vendas.length = 0
     vendas.push(...dados)
-    if (dados2)
-        listare();
+    if (dados)
+        listarv();
 }
 buscar_venda()
 
@@ -67,8 +67,8 @@ async function buscar_compra() {
     const dados = await busca.json()
     compras.length = 0
     compras.push(...dados)
-    if (dados2)
-        listare();
+    if (dadosa)
+        listarco();
 }
 buscar_compra()
 
@@ -126,13 +126,11 @@ async function cadastrarp() {
                         preco: preco.value,
                         quantidade: quantidade.value
                     }
-                    // produtos.push(produto)
                     await fetch('http://localhost:3000/produto/', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(produto)
                     })
-                    // localStorage.setItem("produtos", JSON.stringify(produtos))
                     alert(produto.nomep + " esta cadastrado(a).")
                     listare();
                 }
@@ -277,7 +275,7 @@ async function excluir() {
     if (sla) {
         await deletar_cliente();
         clientes.splice(i, 1);
-        localStorage.setItem("clientes", JSON.stringify(clientes))
+        // localStorage.setItem("clientes", JSON.stringify(clientes))
         alert("Cliente excluído com sucesso!")
         dados3.innerHTML = "";
         cpf3.value = "";
@@ -301,7 +299,7 @@ async function editar() {
         if (nome3.value.trim()) {
             if (/^[A-Za-z\sÀ-ý]+$/.test(nome3.value)) {
                 clientes[i].nome = nome3.value;
-                localStorage.setItem("clientes", JSON.stringify(clientes))
+                // localStorage.setItem("clientes", JSON.stringify(clientes))
                 await editar_cliente();
                 alert("Operação bem-sucedida!");
             } else {
@@ -344,21 +342,21 @@ function listarc() {
 }
 
 function listart() {
-    dados5.innerHTML += "Clientes:";
+    dados5.innerHTML = "Clientes:";
     for (let cliente of clientes) {
         dados5.innerHTML += `<p>Nome: ${cliente.nome} | CPF: ${cliente.cpf} </p>`;
     }
 
-    dados6.innerHTML += "Vendas:";
+    dados6.innerHTML = "Vendas:";
     for (let venda of vendas) {
-        dados6.innerHTML += `<p>CPF: ${venda.cpf2} | Nome do produto: ${venda.produto} | Quantidade vendida: ${venda.quantidade2}</p>`;
+        dados6.innerHTML += `<p>CPF: ${venda.cpf_cliente} | Nome do produto: ${venda.nome_produto} | Quantidade vendida: ${venda.quantidade_produto}</p>`;
     }
 
-    dados7.innerHTML += "Estoque:";
+    dados7.innerHTML = "Estoque:";
     for (let produto of produtos) {
         dados7.innerHTML += `<p>Nome: ${produto.nomep} | Preço: ${produto.preco} | Quantidade: ${produto.quantidade}</p>`;
     }
-    dados8.innerHTML += "Compras:";
+    dados8.innerHTML = "Compras:";
     for (let compra of compras) {
         dados8.innerHTML += `<p>Nome do produto: ${compra.produtoa} | Quantidade comprada: ${compra.quantidadea}</p>`
     }
