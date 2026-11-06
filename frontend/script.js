@@ -116,23 +116,23 @@ async function cadastrarv() {
     }
 
     if (!cliente) {
-        alert("Este produto ou cliente não está cadastrado!");
+        alert("Este cliente não está cadastrado!");
         return;
     }
 
     let sla = false;
-    let indiceProduto = -1;
+    let slaa = -1;
     for (let p of produtos) {
         i++;
         if (p.nomep.toUpperCase() === nome_produto.value.trim().toUpperCase()) {
             sla = true;
-            indiceProduto = i;
+            slaa = i;
             break;
         }
     }
 
     if (!sla) {
-        alert("Este produto ou cliente não está cadastrado!");
+        alert("Este produto não está cadastrado!");
         return;
     }
 
@@ -141,12 +141,12 @@ async function cadastrarv() {
         return;
     }
 
-    if (produtos[indiceProduto].quantidade < Number(quantidade_produto.value)) {
+    if (produtos[slaa].quantidade < Number(quantidade_produto.value)) {
         alert("Este produto não tem estoque!");
         return;
     }
 
-    produtos[indiceProduto].quantidade = Number(produtos[indiceProduto].quantidade) - Number(quantidade_produto.value);
+    produtos[slaa].quantidade = Number(produtos[slaa].quantidade) - Number(quantidade_produto.value);
 
     const venda = {
         cpf_cliente: cpf_cliente.value,
@@ -171,17 +171,17 @@ async function cadastrarv() {
 async function cadastrarco() {
     let i = -1;
     let sla = false;
-    let indiceProduto = -1;
+    let slaa = -1;
     for (let p of produtos) {
         i++;
         if (p.nomep.toUpperCase() == produtoa.value.trim().toUpperCase()) {
             sla = true;
-            indiceProduto = i;
+            slaa = i;
             break;
         }
     } if (sla) {
         if (Number(quantidadea.value) > 0) {
-            produtos[indiceProduto].quantidade = Number(produtos[indiceProduto].quantidade) + Number(quantidadea.value);
+            produtos[slaa].quantidade = Number(produtos[slaa].quantidade) + Number(quantidadea.value);
             const compra = {
                 produtoa: produtoa.value,
                 quantidadea: quantidadea.value
