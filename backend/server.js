@@ -6,6 +6,7 @@ import relatorioRouter from './src/routes/relatorioRouter.js'
 import compraRouter from './src/routes/compraRouter.js'
 import vendaRouter from './src/routes/vendaRouter.js'
 import sequelize from './src/config/database.js'
+import cors from 'cors';
 
 const app = express()
 app.use(express.json())

@@ -3,8 +3,6 @@ const cpf = document.getElementById('cpf');
  const clientes =  []
 const dados4 = document.getElementById('lista-cliente');
 
-import cors from 'cors';
-
 const nome3 = document.getElementById('nome3')
 
 const produtoa = document.getElementById('produtoa')
