@@ -32,7 +32,7 @@ const dados3 = document.getElementById('lista-cliente2');
 
 
 async function buscar_cliente() {
-    const busca = await fetch('http://localhost:3000/cliente')
+    const busca = await fetch('https://lucas-aula6-js-1.onrender.com/cliente')
     const dados = await busca.json()
     clientes.length = 0
     clientes.push(...dados)
@@ -43,7 +43,7 @@ async function buscar_cliente() {
 buscar_cliente();
 
 async function buscar_produto() {
-    const busca = await fetch('http://localhost:3000/produto')
+    const busca = await fetch('https://lucas-aula6-js-1.onrender.com/produto')
     const dados = await busca.json()
     produtos.length = 0
     produtos.push(...dados)
@@ -53,7 +53,7 @@ async function buscar_produto() {
 buscar_produto()
 
 async function buscar_venda() {
-    const busca = await fetch('http://localhost:3000/venda')
+    const busca = await fetch('https://lucas-aula6-js-1.onrender.com/venda')
     const dados = await busca.json()
     vendas.length = 0
     vendas.push(...dados)
@@ -63,7 +63,7 @@ async function buscar_venda() {
 buscar_venda()
 
 async function buscar_compra() {
-    const busca = await fetch('http://localhost:3000/compra')
+    const busca = await fetch('https://lucas-aula6-js-1.onrender.com/compra')
     const dados = await busca.json()
     compras.length = 0
     compras.push(...dados)
@@ -89,7 +89,7 @@ async function cadastrarc() {
                         cpf: cpf.value
                     }
                     // clientes.push(cliente)
-                    await fetch('http://localhost:3000/cliente/', {
+                    await fetch('https://lucas-aula6-js-1.onrender.com/cliente/', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(cliente)
@@ -126,7 +126,7 @@ async function cadastrarp() {
                         preco: preco.value,
                         quantidade: quantidade.value
                     }
-                    await fetch('http://localhost:3000/produto/', {
+                    await fetch('https://lucas-aula6-js-1.onrender.com/produto/', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(produto)
@@ -191,7 +191,7 @@ async function cadastrarv() {
     };
 
     // vendas.push(venda);
-    await fetch('http://localhost:3000/venda/', {
+    await fetch('https://lucas-aula6-js-1.onrender.com/venda/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(venda)
@@ -224,7 +224,7 @@ async function cadastrarco() {
             }
             console.log(produtoa.value)
             compras.push(compra)
-            await fetch('http://localhost:3000/compra/', {
+            await fetch('https://lucas-aula6-js-1.onrender.com/compra/', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(compra)
@@ -396,7 +396,7 @@ async function editar_cliente() {
             nome: nome3.value ?? c.nome,
             cpf: cpf3.value ?? c.cpf
         }
-        let resposta = await fetch(`http://localhost:3000/cliente/${c.id}`, {
+        let resposta = await fetch(`https://lucas-aula6-js-1.onrender.com/cliente/${c.id}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(cliente_atualizado)
@@ -408,7 +408,7 @@ async function deletar_cliente() {
     buscar_cliente()
     const c = await clientes.find(item => item.cpf === cpf3.value)
     if (c) {
-        let resposta = await fetch(`http://localhost:3000/cliente/${c.id}`, {
+        let resposta = await fetch(`https://lucas-aula6-js-1.onrender.com/cliente/${c.id}`, {
             method: 'DELETE'
         })
         await buscar_cliente();
@@ -423,7 +423,7 @@ async function add_produto() {
             preco: c.preco,
             quantidade: c.quantidade
         }
-        let resposta = await fetch(`http://localhost:3000/produto/${c.id}`, {
+        let resposta = await fetch(`https://lucas-aula6-js-1.onrender.com/produto/${c.id}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(produto_atualizado)
@@ -440,7 +440,7 @@ async function vender_produto() {
             preco: c.preco,
             quantidade: c.quantidade
         }
-        let resposta = await fetch(`http://localhost:3000/produto/${c.id}`, {
+        let resposta = await fetch(`https://lucas-aula6-js-1.onrender.com/produto/${c.id}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(produto_atualizado)
