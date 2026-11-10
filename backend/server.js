@@ -15,6 +15,10 @@ app.use('/controle', controleRouter)
 app.use('/relatorio', controleRouter)
 app.use('/compra', compraRouter)
 app.use('/venda', vendaRouter)
+app.get('/health',(req, res) => {
+    res.json({message: "Servidizn rodando",sucess: true})
+})
+
 try {
     await sequelize.authenticate()
     await sequelize.sync()
