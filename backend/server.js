@@ -9,8 +9,12 @@ import sequelize from './src/config/database.js'
 import cors from 'cors'
 
 const app = express()
-app.use(cors());
+app.use(cors({
+    origin: '*',
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS']
+}))
 app.use(express.json())
+
 app.use('/cliente', clienteRouter)
 app.use('/produto', produtoRouter)
 app.use('/controle', controleRouter)
@@ -20,12 +24,12 @@ app.use('/venda', vendaRouter)
 app.get('/health',(req, res) => {
     res.json({message: "Servidizn rodando",sucess: true})
 })
-
+const PORT = process.env.PORT || 3000
 try {
     await sequelize.authenticate()
     await sequelize.sync()
-    app.listen(3000, () => console.log("Servidozin rodando."))
+    app.listen(PORT, () => console.log(`Servidozin rodando na porta ${PORT}.`))
 } catch(erro) {
-    console.error('Falha ao inicar: ', erro)
+    console.error('Falha ao iniciar: ', erro)
     process.exit(1)
 }
