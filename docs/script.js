@@ -89,7 +89,7 @@ async function cadastrarc() {
                         cpf: cpf.value
                     }
                     // clientes.push(cliente)
-                    await fetch('https://lucas-aula6-js-1.onrender.com/cliente/', {
+                    await fetch('https://lucas-aula6-js-1.onrender.com/cliente', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(cliente)
@@ -126,7 +126,7 @@ async function cadastrarp() {
                         preco: preco.value,
                         quantidade: quantidade.value
                     }
-                    await fetch('https://lucas-aula6-js-1.onrender.com/produto/', {
+                    await fetch('https://lucas-aula6-js-1.onrender.com/produto', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(produto)
@@ -191,7 +191,7 @@ async function cadastrarv() {
     };
 
     // vendas.push(venda);
-    await fetch('https://lucas-aula6-js-1.onrender.com/venda/', {
+    await fetch('https://lucas-aula6-js-1.onrender.com/venda', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(venda)
@@ -224,7 +224,7 @@ async function cadastrarco() {
             }
             console.log(produtoa.value)
             compras.push(compra)
-            await fetch('https://lucas-aula6-js-1.onrender.com/compra/', {
+            await fetch('https://lucas-aula6-js-1.onrender.com/compra', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(compra)
